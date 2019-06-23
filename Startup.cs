@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using StudentFinder.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace StuInfo1
 {
     public class Startup
@@ -30,6 +33,8 @@ namespace StuInfo1
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Data Source=StudentFinder.db"));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
