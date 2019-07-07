@@ -35,6 +35,7 @@ namespace Controllers
 
             var studentsModel = await _context.StudentsModel
                 .FirstOrDefaultAsync(m => m.Id == id);
+                
             if (studentsModel == null)
             {
                 return NotFound();
